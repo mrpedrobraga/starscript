@@ -2,6 +2,7 @@
 
 Multi-line comments.
 
+3 + 3
 ###
 
 # Single-line comments.
@@ -12,17 +13,22 @@ Multi-line comments.
 # It doesn't specifically take parameters
 # but if it does you should notate it.
 
+
 --builtins
     * Dialogue can begin with a '*' or a '-'.
     * The information regarding which one was used
     * will be saved.
 
-    * The text allows for [pause 3]tags to be inserted,
+    - hey : The text allows for [pause 0xA]tags to be inserted,
     * but StarScript does *not* handle them at all.
     * Whatever goes inside a dialogue line just gets passed
     * onto the module that will execute the dialogue.
 
-    * <speak-as="Pourheps">Perhaps</speak-as> your dialog is for TTS!
+    - pedro, whispering: Hey Nico...
+
+    * Here are <say-as interpret-as="characters">SSML</say-as> samples.
+    * I can speak in cardinals. Your number is <say-as interpret-as="cardinal">10</say-as>
+    * <p><s>This is sentence one.</s><s>This is sentence two.</s></p>
 
     # Prints Hello onto the standard output.
     print Hello!
@@ -48,7 +54,7 @@ Multi-line comments.
     # but can also interface with more complex objects.
 
     # You can interface with this from the interpreter side.
-    unless {{3 + 3 > 5}}
+    unless {{Player.get("health") > 5}}
         print Hey.
     else
         # Runs if the previous statement was an if, an elif or an unless.
@@ -136,18 +142,12 @@ npc:
         print Hello!
 
 
---give_pizza
-    # Usage: give_pizza <amount>
-
-    # Use $ to refer to a parameter by number,
-    # or to a property by name.
+--give_pizza <amount>
     item give player pepperoni_pizza %1
 
-    # Use {} to refer to a fact (a global parameter).
-    # Accepts / to access members of Dictionaries.
     * Use this {items/pepperoni_pizza} well.
 
---money <character> [give|take] <amount>
+--money <character> give|take <amount>
 
     # Some of your parameters might be words.
     # You can use match statements to branch execution.
@@ -169,7 +169,7 @@ npc:
     # You might even pass values to a return statement.
     return %3
 
---custom_commands
+--custom_commands run|walk <what> very|notvery
     # You can extend the StarScript interpreter
     # to accept your own commands.
 

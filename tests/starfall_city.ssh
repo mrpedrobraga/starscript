@@ -1,0 +1,212 @@
+#############################################
+#
+#	Starfall City, E01
+#
+#############################################
+
+## Lines for Starfall!!!
+
+# Flavour text for places.
+
+--pizza_house
+	sfx knock_knock
+	wait 0.5
+	- What?[pause] Are you the pizza guy?
+		choice Yes
+			- Weird.[pause=3] I didn't order any pizza.
+		choice No
+			- Oh, I could use some pizza right now...
+
+--statue
+	dialog_speed 2
+	* Must be someone important.
+
+--bush
+	dialog_speed 2
+	* A lush, well-kept bush.
+
+
+# For when you encounter Charlie on the city entrance.
+
+--charlie_encounter
+	- charlie : Aaaaand... perfect.
+	- charlie : That's enough water for today.
+	- charlie : Bye bye, my children.
+	with charlie
+		face SOUTH
+		mvadd 0 32
+		mvadd -32 0 
+		wait
+	- charlie : .[pause=3].[pause=3].[pause=3]
+	- charlie : Hm... this...[pause] feeling...[pause] of being watched...
+	with charlie
+		face claire
+		wait 0.3
+		face SOUTH
+		action scared
+	camera shake
+	bgm resume
+	- charlie, aaa : [shake]Aaaaaaaaaaaaaaa[/shake][skip]
+	- charlie, aaa : [shake]My word, oh my.[/shake]
+	wait 1.0
+	with charlie
+		face SOUTH
+		action scared_oh
+	- charlie : One second...
+	with charlie
+		action scared_look
+	- charlie : What ARE you...[br]- You're a human,[pause] right?
+		choice Yes
+			icon: positive
+
+			with charlie
+				action scared_down
+			camera shake
+			- charlie, aaa : [shake]Aaaaaaaaaaaaa[pause][br]- A human person![/shake]
+		choice No
+			icon: negative
+
+			with charlie
+				action scared_down
+			camera shake
+			- charlie, aaa : [shake]Aaaaaaaaaaaaa[pause][br]- What the heck ARE you then?!?![/shake]
+	- charlie, aaa : [shake]That's it![pause] I'm gonna bloody die![/shake]
+	wait 1.0
+	with charlie
+		action scared_oh
+
+	- charlie : A-[pause]another second...
+	with charlie
+		action scared_look
+	- charlie : Are you like...[pause][br]- Are you real?
+		choice Yes
+			icon: positive
+
+			with charlie
+				action scared_down
+			shake
+			- charlie, aaa : [shake]Aaaaaaaaaaaaa[pause][br]- I'm gonna die,[pause] for real!!!![/shake]
+		choice No
+			icon: negative
+
+			with charlie
+				action scared_down
+			shake
+			- charlie, aaa : [shake]Aaaaaaaaaaaaa[pause][br]- Am I getting MAD???[/shake]
+			- charlie, aaa : [shake]Is this what isolation does to a person?[/shake]
+	- charlie, aaa : [shake]Aaaaaaaaaa[/shake]
+	with claire
+		mvanchor charlie
+	- claire : I'm not gonna... hurt you...
+	- claire : I'm just lost.
+	with charlie
+		action scared_look
+	- charlie : Really...?
+	- claire : Yes...
+	wait 1.0
+	with charlie
+		action scared_oh
+	wait 1.0
+	with charlie
+		action scared_look
+	wait 1.0
+	with charlie
+		action scared_oh
+	wait 1.0
+	with charlie
+		action idle
+	- charlie : Ok, bye then.
+	with charlie
+		mvadd -256 0
+		destroy
+		wait
+
+# For charlie's house
+
+--charlie_door
+	sfx knock_knock
+	call charlie_house_knock_knock
+	wait 0.5
+	shake
+	- charlie : Aaaaaa![pause]- One minute!
+
+# For the betting agaisnt HatCat
+--hatcat_shop
+	- hatcat : Ha ha ha![input] Wanna bet with moi?
+	- hatcat : To the shiny gem get,
+	- hatcat : Three times you must find the hat.
+	- hatcat : Seems simple, but I tell ya that,
+	- hatcat : You will really break a sweat!
+	* Will you challenge the hat cat?
+		choice Sure
+			fact set E01/hatcat/engaged_on_bet true
+		choice Nuh-uh
+			- hatcat : Unfortunate, that.
+--hatcat_shop_closed
+	- hatcat : Ha ha ha! The shop is closed forever.
+	* Oops.
+--hatcat_shop_closed_2
+	* It's closed.
+--hatcat_before_shuffle
+	- hatcat : Here's the rarest shiny stone.
+	- hatcat : Sleight of hand, and - poof! - it's gone!
+--hatcat_after_shuffle
+	- hatcat : Find which hat the stone is under,[br]or you will commit a blunder!
+
+--hatcat_wrong
+	- hatcat : Victory is a difficult feat...
+	- hatcat : But try again -- you may succeed!
+
+# When you pick the hats correctly.
+--hatcat_correct_1
+	- hatcat : Ho ho ho, you really did great!
+	- hatcat : Shall we play one more round, mate?
+--hatcat_correct_2
+	- hatcat : Ho ho ho, that was fantastic!
+	- hatcat : You are really quite...[pause=4] bombastic? Bombastic.
+--hatcat_correct_3
+	- mystery_kid : Hello, Hero of Spirit!
+	- mystery_kid : Is this a bad time? I assume not!
+	- mystery_kid : Hahahahaha, I'm just checking on ya, luv.
+	- mystery_kid : You're doing a tremendous job.
+	- mystery_kid : Didn't even die once!
+	- mystery_kid : By the way, here's a tip.
+	- mystery_kid : While moving [purple]your SOUL[/purple], press {KEY_OK}.
+	- mystery_kid : Go, try it right now!
+
+--hatcat_correct_3_cont
+	- mystery_kid : Excelent.
+	- mystery_kid : You,[pause 2] the owner of a [purple]purple[/purple] SOUL,[pause 2] can [purple]"[i]Dash[/i]."[/purple]
+	- mystery_kid : So, remember well.
+	- mystery_kid : [purple]Purple[/purple],[pause 3] [purple]Dash[/purple].
+	- mystery_kid : See ya later, darling!
+
+--spri_talk
+	* By second nature, you reach to the light...
+	- spri : Wassup Claire, ma boss!
+	- spri : Yo! So much time passed!!!
+	- spri : Hm?[pause] What's with your face?
+	- spri : Were ya expecting [important]sumthin' else[/important]?
+	- spri : Eh, who am I kidding, noone's never expectin Spri.
+	- spri : I-I don' even care anymore.
+	* The sprite begins crying.
+--spri_talk_repeat
+	* This lonely city floating amidst the void fills you with... uh... something...
+	
+--bonsy_talk
+	- bonsy : Hm?
+	- bonsy : Oh, my, it's [important]The Hero of Spirit[/important]!
+	- bonsy : You know, with all that is happening, it's hard to stay happy.
+	- bonsy : I feel so... so hollow...
+	- bonsy : That's why I bought this girl-shaped balloon.
+	- bonsy : To keep me company, to chat and all.
+	- bonsy : Until I realized,
+	- bonsy : In her own way,[pause] she's hollow, too.
+--bonsy_talk_repeat
+	dialog_speed 2
+	* The doll's lifeless eyes stare at the unending black void.
+
+--mayor_hall_bag_of_money
+	dialog_speed 2
+	* For efficience,[pause 2] the city's bank is at the same building as the mayor's office.
+	* Since that's where all the money would end up anyways.

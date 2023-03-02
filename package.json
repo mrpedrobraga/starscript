@@ -19,7 +19,19 @@
     "grammars": [{
       "language": "starscript",
       "scopeName": "source.starscript",
-      "path": "./syntaxes/starscript.tmLanguage.json"
+      "path": "./syntaxes/starscript.tmLanguage.json",
+      "embeddedLanguages": {
+        "source.js": "javascript",
+        "meta.embedded.block.javascript": "javascript",
+        "source.gdscript": "gdscript",
+        "meta.embedded.block.gdscript": "gdscript",
+        "source.glsl": "glsl",
+        "meta.embedded.block.glsl": "glsl",
+        "source.shellscript": "sh",
+        "meta.embedded.block.shellscript": "sh",
+        "source.batch": "batch",
+        "meta.embedded.block.batch": "batch"
+      }
     }]
   }
 }

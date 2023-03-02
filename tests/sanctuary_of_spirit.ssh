@@ -1,0 +1,62 @@
+#############################################
+#
+#	Sanctuary of Spirit, E01
+#
+#############################################
+
+## Lines for The Sanctuary of Spirit.
+
+# Claire enters the sanctuary,
+# but then faces a strange shadow, on the passage
+# between the main hall and The Mirror's room.
+
+--intro
+	- lilo, none : You know, you're not what you'd expect of a prophecized hero.
+	bgm play The_Sanctuary_Of_Spirit
+
+	- lilo, none : I used to imagine a knight in shining armour, brandishing a sword and facing monsters.
+	- lilo, none : An unstoppable warrior, wielding the power of Spirit.
+	- lilo, none : But now that I see you...
+	- lilo, none : You're just a kid.
+	- lilo, none : The others see no issue in that.
+	- lilo, none : Isn't it strange?
+	- lilo, none : They have barely met you, and they already love you.
+	- lilo, none : We are a weird bunch,[pause=2] aren't we?
+	wait 2.0
+	- lilo, none : But I can't help but raise one question.
+	- lilo, none : "Can a kid really fulfill that prophecy?"
+	- lilo, none : I've seen, time after time, stars would enter the mirror to never come out.
+	- lilo, none : That mirror will show you things... that you can't come back from.
+	- lilo, none : Truths that will change forever how you see the world, others and yourself.
+	wait 2.0
+	- lilo, none : In this strange place,
+	- lilo, none : You made new friends,[pause=2] kids like you.
+	- lilo, none : You could make it a home.
+	- lilo, none : Yet, you come to the mirror.
+	- lilo, none : Maybe you are curious, too.
+	- lilo, none : "Can a kid really fulfill that prophecy?"
+	- lilo, none : The answer is "no."
+	- lilo, none : Because if you enter and leave that mirror,
+	- lilo, none : You will no longer be a kid.
+	- lilo, none : And your childhood will, too, vanish.
+	- lilo, none : You won't find it here, nor back with your human friends.
+	- lilo, none : Do you understand?
+		choice Yes
+		choice No
+	- lilo, none : Well, turn around or step forward...[pause 2] you decide your own fate.
+
+--decided_to_fight
+	- lilo, none : Of course.[pause=2].[pause=2].[pause=2]
+	- lilo, eyes_closed : T-that was one point, but there's something else.
+	- lilo : I must admit...
+	- lilo : I grew a liking to you, too.
+	- lilo : I imagine a future where we can be friends.
+	- lilo : And I can't lose one more SOUL for that mirror.
+	- lilo : If it's your will to go in and save the world, so be it.
+	- lilo : But first,[pause=2] you'll have to prove it to me that you got what it takes to face it AND come out.
+	- lilo : So, whenever you're ready.
+	- lilo : Take, uh, another step.
+
+--decided_to_fight_2
+	- lilo : O-[pause=2]okay![pause=2]
+	- lilo : Ready or not,[pause=2] here I come!!!

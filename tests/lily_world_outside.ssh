@@ -1,0 +1,437 @@
+# Lines for Lily's World
+
+### OVERWORLD LINES ###
+
+myValue = 3
+
+--enter
+	bgm pause
+	bgm load Funky_Fields
+	
+	# Focus on the door.
+	transition CUT out black
+	transition FADE in white
+	- lily : Hey, watch out my feet!
+	- andy : Uh, oh, sorry!
+	- rodrick : Can you guys get out of the[skip]
+	- bruno : Ouch, Ow!?
+	- claire : Wait, guys calm down, let's just...
+	call exit_door
+	wait 2.0
+	- bruno : OH, SOME SWEET AIR.
+	- andy : Yeah, it's really windy in here.
+	wait 2.0
+	
+	# Lily looks around.
+
+	- lily : What IS this place?
+	- claire : This is your mind, Lily.
+	- lily : We're... in my HEAD?
+	- bruno : Eh,[pause 4] this is technically another dimension which uses magic holograms with mass to replicate the abstract idea of your mind-
+	- lily : Hey, calm down, I didn't ask for the recipe!
+	- bruno : Ooops.
+
+	- claire : So, Lily, we should now investigate the matters from within here.
+	- claire : I promise it won't be as boring as you'd imagine.
+	- lily : I am bored already.
+	- claire : Uh, oh, so let's start going!
+
+	- andy : Oh yeah!
+	- andy : HEROES ASSEMBLE!!!
+
+	wait 3.0
+
+	- andy : Like, get all together on a straight line.
+	- lily : Uhhh...
+	- andy : I'm sorry, I was tryna up the mood-
+	- lily : nonono,[pause] I like this.[pause] Yeah,[pause] let's[pause] um[pause] ASSEMBLE![pause] YEAH!
+
+	# Heroes assemble.
+
+	- lily : [shake]LET'S FIND THE CAUSE OF TROUBLE AND BEAT IT THE HECK DOWN!![/shake]
+	- claire : (oh boy...)
+
+	# Funky Fields begin to play.
+	bgm restart
+
+
+
+### FIGHT INTERACTIONS ###
+
+## When you fight a policeman!
+
+--vs_police_enter
+	* Policeman enforces himself into battle.
+	- policeman : NO LOITERING!
+--vs_police_loiter_first
+	* Lily loiters.
+	* The policeman is OUTRAGED.
+	- policeman : I'm OUTRAGED.
+	- rodrick : You call THAT loitering?
+--vs_police_loiter
+	* Lily loiters.
+	* The policeman is PISSED OFF.
+--vs_police_loiter_ex
+	* Rodrick loiters with [wave]passion[/wave].
+	* The policeman can't handle such disrespect.
+--vs_police_claire_kindly_ask
+	- claire : Mr. officer, would you kindly let me and my friends go?
+	- policeman : Hmm, for such a polite young lady I might...
+	- policeman : But what about your friends there?
+	- andy : Oh yeah, if you'd be so kind, sir!
+	- bruno : oh yeah that'd be nice and such
+	- lily : Oh it would be convenient.
+	- rodrick : ...
+	- rodrick : what?
+	* The policeman is waiting for Rodrick's statement.
+--vs_police_rodrick_attacked
+	* That's not how politeness works.
+	* Try using the {ACT} menu.
+--vs_police_rodrick_kindly_ask
+	- rodrick : If you'd get out of our way it'd be great.
+	- policeman : I hear some passive agressiveness in your tone, young man.
+	- rodrick : [whisper]I'm almost being active agressive.[/whisper]
+	- claire, worried : Rodrick, just try, I believe in you.
+	- rodrick, awkward : Um...[pause 3] I...[pause 3] uh...
+	- andy, reassuring : You can do it, Rod!
+	- rodrick, sigh : *sigh*
+	- rodrick, tired : Sir, can you let us go, please?
+	wait 1.0
+	- policeman : I believe it would be[pause 2] "may you let us go".
+	- rodrick : Yep,[pause 2] not happening.
+	* Was worth a shot.
+--vs_police_spared
+	- policeman : Stay in school, kids!
+
+## When you fight a nurse!
+
+--vs_nurse_enter
+	* Kneedle wielders inject themselves into battle!
+--vs_nurse_clarify
+	- claire : Oh, you're afraid of doctors?
+	- lily : Huh? Oh, no, my doctor is like, super nice.
+	- lily : Nurses, on the other hand...
+	- bruno : What's up with nurses?
+	- lily : Nurses... they have you on your most vulnerable moments...
+	- lily : When you shit and vomit yourself in the hospital.
+	- lily : They know your darkest moments, man...
+	- andy : Hmm.
+--vs_nurse_just_a_pinch
+	- nurse : It'll be Just a Pinch!
+--vs_nurse_spared
+	* You got 1x Lollipop.
+
+## When you fight a teacher!
+
+--vs_teacher_enter
+	* It's time for class.
+--vs_teacher_lecture_1
+	* Teacher lectures {target} on the dressing code.
+	* {b} feels their COLOUR washing out.
+--vs_teacher_lecture_3
+	* Teacher criticizes {b}'s bullet dodging style.
+	* {b} feels their COLOUR washing out.
+--vs_teacher_lecture_2
+	* Teacher lectures {b} on why the way they solved the assignment is technically correct but they won't accept it.
+	* {target} feels their COLOUR washing out.
+--vs_teacher_lily_comply
+	- claire : Just pay attention to the bullets, Lily.
+	* Lily feels her COLOUR washing out.
+--vs_teacher_lily_entice
+	- claire : You can do it! Run as fast as you can!!!
+	- lily : OH I WILL
+	* Lily's COLOUR floods back in.
+--vs_teacher_andy_entice
+	* Claire tells a bad joke.
+	* Andy laughs, then makes a disapproving face.
+	* His COLOUR floods back in.
+--vs_teacher_bruno_entice
+	* Claire shares a fun fact about a videogame.
+	- bruno, actually : Um, actually...
+	* Bruno's COLOUR floods back in.
+--vs_teacher_rodrick_entice
+	* Lily friendly punches Rodrick in the arm.
+	- rodrick, smile : what a weak little punch what the heck was that
+	* Rodrick's COLOUR floods back in.
+--vs_teacher_apple
+	* Claire gives the teacher an apple.
+	* Lily steals the apple from the teacher's table.
+	* ...
+	* Got 1x Apple!
+	item give lily apple 1
+--vs_teacher_spared
+	- teacher : Class dismissed.
+
+
+
+
+### MYSTERY KID INTERACTIONS ###
+
+--mystery_kid_hint_01
+	with mystery_kid
+		action appear
+	bgm stack Card_Deal
+
+	- mystery_kid : Hello, partner! Are you in for a hint?
+	- claire : Oh, not really! I just got here!
+	- mystery_kid : Oh... I see...
+	- claire : Yeah...
+	wait 4.0
+	- mystery_kid : Well, see ya.
+	call mystery_kid_turn_into_rocket_and_leave
+	checkpoint
+	wait 3.0
+	- claire : what the[skip]
+	call mystery_kid_nuclear_explode
+	wait 3.0
+	with claire
+		face SOUTH
+
+
+### DOGS INTERACTIONS ###
+
+# The scene that comes right before the fight against Lily.
+--pre_vs_lily_scene
+	bgm transition Fast_Food
+
+	- lily : Oh, this place...
+	- claire : You know that?
+	- lily : Yeah, it's my parent's diner.
+	- claire : It looks familiar... Have I seen it before?
+	- lily : Uhh, it's a little bit different nowadays, it's in the mall!
+	- lily : I actually work there part time.
+	- lily : Well, can't wait to wreck it with this baseball bat.
+
+	# Lily walks to the dog guarding the entrance.
+
+	- dog01 : Can't pass.
+	- lily : What? I'm the daughter of the bosses?
+	- dog01 : Sorry. We have a dress code.
+	- lily : ARE YOU KIDDING ME?
+	- dog01 : I am not.
+	- lily : Can't you really let us in?
+	- dog01 : I can,[pause 4] once you're ready to comply by the rules of the estabilishment.
+	- lily : Ughhh...
+
+	# They walk away.
+
+	- claire : Um... Lily...
+	- lily : Hmm... maybe we can try entering by the back?
+	- claire : Lily...
+	- lily : Or, oh, the vents might be open -- the ones they installed are, like, comically big.
+	- claire : Lil[skip]
+	- lily : OH if we just found a BONE...
+	- claire : LILY! Uh, oh, I'm sorry.
+	- lily : That's my name, alright!
+	- claire : I think we could just... change clothes... and enter by the front door...
+	- lily : wait...
+	- claire : Like, we can just... play by the rules for once...
+	bgm fade out
+	bgm load Shockin_Betrayal
+	- lily : ...
+	- lily : you are...
+	- lily : [shake]BETRAYING ME?[/shake]
+	bgm restart
+	speech_scale 2
+	# Lily points at Claire
+	- lily : [shake]I THOUGHT YOU WERE ON MY SIDE![/shake]
+	- claire : And I am! I'm just suggesting that we try cooperating.
+	- claire : If we just sit together and change clothes, and then try having a conversation[skip]
+	- bruno : I'm gonna wait on the previous room...
+	# Bruno walks off-screen
+	- lily : Yada, yada, blah, blah, blah, we don't do [pause 2] "talking"[pause 2] around here.
+	- lily : I AM THE [shake]THUNDER QUEEN[/shake], BABY!
+	- lily : IF YOU WANT TO MAKE ME DO SOMETHING...
+	- lily : YOU'LL HAVE TO BEAT ME UP IN A [shake]FIGHT[/shake].
+	- claire : Rodrick, can you help me in this?
+	- rodrick : Uh...
+	# Rodrick moves to her side.
+	- claire : What?
+	- rodrick : sorry, I'm loyal to my teammate.
+	- claire : w-w-w-what[skip]
+	- lily : HA,[pause 2] WHO'S BEEN BETRAYED NOWWW????
+	- claire : Lily, can't we really talk?
+	- lily : No talk, only FIGHT.
+	- claire : I'm not gonna fight you!
+	- lily : Why? Are you scared by any means?
+	- claire : I'm not scared, I'm simply trying to be reasonable here.
+	- lily : Sounds like you're scared to me.
+	- claire : Holy mayo-[skip]
+	- lily : Think [desync]quick!
+	# Lily attacks, Andy retaliates.
+	speech_scale 1
+	- claire : Andy!!!
+	- andy : Oops!
+	bgm fade out
+	- claire, down : *sigh*
+	wait 1.0
+	- claire : Can't believe I'm going to do this.
+	- lily, surprised : *GASP*
+	battle join POWER_DUO
+
+--diner_entrance
+	- claire : Okay. Let's do this right.
+	- lily : *sigh*
+
+	- claire : Do you guys have any fancy clothes?
+	- andy : Nuh uh.
+	- bruno : I have a suit I use for my parent's confraternizations.
+	- bruno : Eh... Claire, I can arrange a suit my sister uses for you.
+	- bruno : Now, Andy...
+	- andy : I'll find a way.
+	- bruno : Rodrick?
+	- rodrick : Oh, I'll be real fancy.
+	- bruno : huh...
+	- lily : *sigh* I should get into my uniform now.
+	- claire : Right, let's suit up.
+
+	transition SWIPE out black
+	# Change every variation of the characters to their Lily World variations.
+	call switch_clothes
+	transition SWIPE in black
+
+	- bruno : This was a good idea. We be lookin' real fancy!
+	- bruno : Sorry on yours, Claire, my sister is a bit bigger than you.
+	- claire : It's okay. I feel adequately fancy in this.
+	# NOTE : Benechi wanted a dark red suit, which makes her look like a hotel helper.
+	- bruno : nice.
+	- bruno : Wait, Andy, where did you get yours?
+	- andy : Oh, this is Charlie's. We traded clothes.
+	- bruno : Traded?
+	- andy : Yeah, I gave him my clothing... he have me his.
+	transition slide out
+	call charlie_scene_on
+	transition slide in
+	bgm stack Charlie_the_Mailman
+	
+	- charlie : YEAAAAH I'M THE MIGHTY HERO OF LIGHT!!! TAKE THIS BAD GUYS... PEW PEW PEW-
+
+	transition slide out
+	call charlie_scene_off
+	transition slide in
+	bgm pop
+	
+	- andy : I wonder what he's using it for...
+	- claire : Alrighty, let's go in!
+	
+
+### KANDY INTERACTIONS ###
+
+--kandy_01
+	# Kandy appears out of nowhere. Their theme begins playing.
+	
+	call kandy_appear_one
+	bgm stack Abstract
+
+	- kandy : SUP LOSERZ.[br]PREPARE YOUR S3LFS F0R MY PR3SENCE!!!111!
+	- rodrick : [whisper]Who the heck are you.[/whisper]
+	- kandy : Oh, really? You guys D0N'T remember M3?
+	- claire : Um... doesn't ring a bell, no.
+	
+	# TODO: Fact check this.
+	- kandy : We battled like, four rooms ago.
+	- kandy : Fellas, y'4ll'r3 in for A TREAT y0u see!
+	- kandy : I have [wave]OBSERVED[/wave] with my very eye you peeps seem to be in a surplus of
+	- kandy : [wave]SOUL[/wave].
+	
+	# Claire, Andy and Bruno back away.
+	
+	- kandy : you got no where to run
+	- kandy : no where[br]no what[br]no how
+	- kandy : (T-this is pretty abstract, even for me, abstraction personified)
+	- rodrick, wtf : ...
+	- kandy : i'm strong, y'all,[pause 2] i put the abs in abstract
+	
+	- kandy : WANNA SEE MY MUSCLES
+	- kandy : I HAVE NO ARMS
+	- kandy : i didn' think this thru
+	
+	call kandy_leave_one
+	bgm return
+
+	wait 1.0
+	- claire : What just happened...?
+	* Everyone is unsure.
+
+--kandy_02
+	# Kandy appears, again.
+	
+	call kandy_appear_two
+	bgm stack Abstract
+	
+	- kandy : hey hey hey hey uo hey hey you
+	- kandy : guess
+	- kandy : 1'm bacc[pause 2] and i am W3LL pr3p4red th1s tim3.
+	- kandy : Actually, it seems I have forgotten the plan.
+	- kandy : Let me take a moment to recollect my thoughts.
+	- claire : Uhh... take your time.
+	
+	bgm pause
+	with kandy
+		face SOUTH
+	
+	# They recollect their thoughts.
+	wait 3.0
+	
+	bgm restart
+	with kandy
+		face claire
+	
+	- kandy : ok so I'm recolleted
+	- kandy : so here's the plan
+	- kandy : i have a knife-
+	
+	with lily
+		action weapon_summon
+		sfx    weapon_summon
+	
+	- andy : You're... gonna cut a cake! To share with us!
+	- kandy : boy 1'm gonn4 cut Y0Ur cake /th.
+		choice "No Violence"
+			icon: ACT
+
+			- claire : Hey, hey, there's no need for violence.
+			- kandy : will you give me your SOUL for free?
+			- claire : no i[skip]
+			- kandy : Than there IS a need for violence
+			- kandy : There's always a good use for violence.
+			- lily : Agreed.
+			- kandy : ...i... i feel a disturbance in your [desync]nOONONOONO
+	
+			# Lily chases Kandy away
+			wait 3.0
+	
+			# Lily comes back
+			- lily : 'sup.
+
+		choice "We'll beat you up"
+			icon: ATTACK
+
+			speech_scale 3
+			- lily : WELL IF IT'S A FIGHT YOU WANT!!!
+			- kandy : IT IS EX4CTLY A F1GHT 1'M L0OKING FOR, YES
+			- lily : YOU ARE THREATENING THE WRONG GIRL!
+			- kandy : aRE YOU EV3N TH4T STR0NG
+			- lily : Ah, YOU DON'T WANNA FIND OUT, MY FRIEND!
+			- kandy : MAYBE I D- Oh, wait,[pause 3] we're friends {smiley_face}?
+			speech_scale 1
+			- claire : Guys, let's calm down.
+			- lily : Pfft this won't be really a conflict.[br]We're five, we can beat them super easy.
+			- kandy : Oh, I didn' think about this.
+			- lily : Hm?
+			- kandy : bu byee
+			- lily : You're gonna just...[pause 4] leave?
+			- kandy : oh yes I can't beat all of you lmao who do you think I am
+			# Kandy walks off screen.
+	bgm return
+	
+	- claire : Phew, this one was close.
+	- lily : It wasn't, really...
+	- rodrick : Wait, could they really get one of our SOULS by killing us?
+	- bruno : Nah. The shock of death would make 'em unusable.
+	- bruno : Not doable.
+	- bruno : Although...[pause] it might be possible in another way.
+	speech_scale 2
+	- bruno : If they had a container to reduce the impact shocked caused by the Ex04 x-link[skip]
+	speech_scale 1
+	- rodrick, smile : OK THAT'S ENOUGH, MOVING ON

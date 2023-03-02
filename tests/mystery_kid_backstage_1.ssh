@@ -1,0 +1,174 @@
+#############################################
+#
+#	MK Backstage, E01
+#
+#############################################
+
+## Lines for The Mystery's Kid backstage room.
+
+# TODO: Test this file with expressions.
+
+# Some flavour text
+
+--mirror
+	* The room was constructed smaller here, to give a feeling of perspective.
+	* Also, the mirror doesn't work.
+--mirror2
+	* It's you-[pause 2] NOT!
+	* The mirror is too matte.
+--boombox
+	* It's a boom... parallelepiped?
+--spilled_coffee
+	* CAUTION. The floor is coffee'd.
+--spilled_coffee2
+	* There's no use crying over spilled coffee.
+--rack
+	* Several black suits with red-blue ties.
+	* Amongst them, you can see a red one.
+--rack2
+	* It's not yet time for you to wear a suit.
+--vhs
+	* A stack of cassettes.
+	* It seems like it consists of sitcoms.[br][input]* But it was spliced to contain only the laugh tracks.
+--garbage
+	* Ew,[pause 2] it's trash.
+--papers
+	* It's several pages of paper written with glitter pens.
+	* In it, alternate scripts for this very encounter.
+	* ...and a bunch of doodles of several hot people in gorgeous glittery suits.
+--papers2
+	* One of the papers has a marking in red saying
+	* "Rude! Stop looking at other people's stuff."
+--papers3
+	* You feel a tremendous sense of guilt.
+
+# Dialogue lines
+--comment_about_the_room
+	- claire : Yea, I really don't dig rooms that are pitch black and have no walls.
+
+--conversation
+	# TODO: Move Claire to the correct place
+    speech_scale 0.5
+	face NORTH
+	- claire : ...
+    speech_scale 0.7
+	* Poor girl...
+	* Lost, and confused...
+	* But, I must say...
+	* You[pause 2] ARE a brave one.
+	* Listen carefully.
+	wait 2.0
+	#bgm play Introduction
+	* You have committed a terrible mistake.
+	* And,[pause 2] now,[pause 2] must pay for it.
+    speech_scale 0.7
+	* With your [purple][wave]SOUL[/wave][/purple].
+	bgm pause
+	call summon_fires
+    speech_scale 0.5
+	* Goodbye.
+    speech_scale 1
+
+	wait 2.0
+	bgm play Card_Deal
+	call reveal
+	wait 3.0
+
+	- pierre, none : Meow![br]- (You were right, boss!)
+	- pierre, none : (That was priceless!)
+	- mystery_kid, laugh : Well,[pause 2] it was rather tropey...[br][pause 3]* But it WAS quite funny, yea!
+	- pierre, none : It was cheesy, but... look at her, shaking in her boots!
+	- claire : aaaaaaaaaaaaa
+	- mystery_kid, druggy : Chillax mate[pause 2], it ain't us who's gonna kill ya.
+	- mystery_kid, smile : In fact,[pause 2] we're here to help ya, darling.
+	- claire, down : Oh... that's nice,[pause 2] I guess![br][pause 3]- Please don't do that ever again.
+	- claire, up : You started saying all those things and...
+	- mystery_kid : Oh,[pause 2] it IS all true, in a way.
+	- mystery_kid : You must've noticed that everything outside is kinda... different.
+	- mystery_kid, ooo : It's all a horrendous shade of navy blue.
+	- mystery_kid, ooo_also : Oh, and the people with their minds Twisted,[pause 2] too, pretty nasty if you ask me.
+	- claire, down : Oh... I[skip]
+	bgm pause
+	- mystery_kid, serious : That's cause of [br][important]yesterday[/important].
+	- mystery_kid, serious : [important]Something happened and broke the world, basically.[/important]
+	- mystery_kid, serious_closed : [important]Corrupted everyone's memories.[br][pause 2]* It left the world...[/important]
+	bgm resume
+    speech_scale 0.1
+	call zoom
+	- mystery_kid, laugh : [wavy]Fragmented[/wavy].
+    speech_scale 0.03
+	call unzoom
+	- mystery_kid, smile : And [important]you[/important] are gonna fix it,[pause 2] of course.
+	- claire, question : Wh-... I...
+	- claire, question : I am confused...
+	- mystery_kid, druggy : Don't worry, it's okay to worry.
+	- mystery_kid, smile : But think like that...[br]* You did quite good up to here, didn't ya?
+	- mystery_kid, smile : Didn't even die once!
+	- mystery_kid, smile : If you fix this issue with the fabric of reality now...
+	- mystery_kid, smile : You're gonna be home quite soon,[pause 2] eh?
+	# Handy contract appears and lays on the table.
+	- mystery_kid, smile : All you gotta do is sign this handy contract here.
+		choice "I can try?"
+			icon: thumbs_up
+			- mystery_kid, smile : You can try?
+			- mystery_kid, laugh : There is absolutely no room for failure here.
+			- mystery_kid, smile : We're talking BIG stakes, claire.
+		choice "What even is it that's happening?"
+			icon: question
+			- mystery_kid : There's no time to explain it now.
+			- mystery_kid : We're in a hurry.
+			- mystery_kid, sad_serious : I am a busy person, claire.
+			- mystery_kid : But I explain it in my podcast.
+			- mystery_kid : You should check it, it's like @mysterych[skip]
+		choice "What? Not me!"
+			icon: negative
+			- mystery_kid, laugh : You do realize you have no choice whatsoever,[pause 2] right?
+			- mystery_kid, smile : It's not like you have anywhere else to go.
+			- claire, down : I don't even know you!
+			- claire : I shouldn't talk to strangers.
+			- claire : Or sign random creepy contracts.
+			- claire, up : For all I know you could be a zombie.
+			- mystery_kid, druggy : A...[pause 3] zombie?
+			- claire : Never mind[skip]
+	- claire : Okay, I'll sign it.[pause 2] I guess.
+	- mystery_kid, smile : Brilliant!
+	call zoom
+	- mystery_kid, laugh : You've got the [important]SPIRIT[/important], girl!
+	call unzoom
+	with claire
+		face SOUTH
+		wait 1.0
+		action up
+	- claire, up : (Where's that laughter even coming from...)
+	with claire
+		action idle
+		face NORTH
+	# Claire goes to sign the contract.
+	- mystery_kid : Worry not, claire.
+	- mystery_kid, smile : You're the perfect person for this job.
+	- mystery_kid, smile : Saving the world,[pause 2] that's what teenagers do best, right?
+	- mystery_kid : And Pierre, the cat, will help you with incidental support.
+	- mystery_kid, smile : He'll be the perfect companion in these trying times.
+	- pierre, none : Meow![br]- (Wait,[pause 2] did you not mean...[br][pause 3]- [wave]Purr[/wave]fect?)
+	call menace
+	bgm pause
+	wait 2.0
+	call zoom_cut
+	wait 2.0
+	- mystery_kid : [pause 2]n[pause 3]o[pause 3].
+	bgm resume
+	call unmenace
+	- mystery_kid, smile : Where were we, luv?[br][pause 2]* Oh, yeah!
+	- mystery_kid, smile : It's time for you to visit the other side.
+	- mystery_kid : Might be dangerous, and a bit... chilly, but...[pause 2] eh...
+	- mystery_kid, smile : You're a tremendous fighter, sweetie, if you keep up the good work,
+	- mystery_kid : there's an 100% chance that maybe you'll survive.
+	- mystery_kid, smile : Remember, we're all counting on ya.
+	- mystery_kid : Cheerios!
+	bgm pause
+	# MK, Pierre, and the entire table float away with a comic whistle noise.
+	# weeeeeeeeeeeeeeeep.
+	call leave
+
+	# When Claire leaves this scene now, the
+	# bottom door should leave her out in Mysterious Forest.

@@ -1,32 +1,239 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "StarScript",
+	"scopeName": "source.starscript",
 	"patterns": [
+		{
+			"include": "#block_comments"
+		},
+		{
+			"include": "#line_comments"
+		},
+		
+		{
+			"include": "#booleans"
+		},
+		{
+			"include": "#labels"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#hex"
+		},
+		
+		{
+			"include": "#sections"
+		},
+		{
+			"include": "#embed_GDScript"
+		},
+		{
+			"include": "#embed_GLSL"
+		},
+		
+		{
+			"include": "#string_include"
+		},
+		{
+			"include": "#parameter_include_escape"
+		},
+		{
+			"include": "#parameter_include"
+		},
+
+		{
+			"include": "#dialogs"
+		},
 		{
 			"include": "#keywords"
 		},
 		{
-			"include": "#strings"
+			"include": "#properties"
 		}
+		
 	],
 	"repository": {
-		"keywords": {
+		"line_comments": {
+			"name": "comment.line.number-sign",
+			"begin": "#",
+			"end": "\\n"
+		},
+		"block_comments": {
+			"name": "comment.block",
+			"scope": [
+				"comment.block"
+			],
+			"begin": "###",
+			"end": "###",
+			"patterns": [
+				{"include": "#section_signature"}
+			]
+		},
+
+		"booleans": {
+			"name": "constant.language",
+			"match": "(?i)\\b(true|false|yes|no|on|off|0b|1b)\\b"
+		},
+		"labels": {
+			"scope": [
+				"label"
+			],
+			"name": "constant.numeric",
+			"match": "::(\\w[\\w\\d]+)::"
+		},
+		"numbers": {
+			"name": "constant.numeric",
+			"match": "\\b([0-9_]+(\\.[0-9_])?|0o[0-8_]+(\\.[0-8_])?|0b(?:01TF_)+(\\.(?:01TF_))?)\\b"
+		},
+		"hex": {
+			"name": "constant.rgb-value",
+			"match": "\\b0x[0-9A-Fa-f_]+(\\.[0-9A-Fa-f_])?\\b"
+		},
+
+		"embed_GDScript": {
+			"name": "",
+			"begin": "{{",
+			"end": "}}",
+			"contentName": "meta.embedded.block.gdscript",
+			"patterns": [
+				{"include": "source.gdscript"}
+			]
+		},
+		"embed_GLSL": {
+			"name": "",
+			"begin": "```glsl",
+			"end": "```",
+			"contentName": "meta.embedded.block.glsl",
+			"patterns": [
+				{"include": "source.glsl"}
+			]
+		},
+		"string_include": {
+			"name": "comment",
+			"begin": "{",
+			"end": "}",
+			"contentName": "storage.type"
+		},
+		"parameter_include": {
 			"patterns": [{
-				"name": "keyword.control.starscript",
-				"match": "\\b(if|while|for|return)\\b"
+				"name": "entity.name.class",
+				"match": "%(\\d+|\\w[\\w\\d-]+)\\b"
 			}]
 		},
-		"strings": {
-			"name": "string.quoted.double.starscript",
-			"begin": "\"",
-			"end": "\"",
+		"parameter_include_escape": {
+			"patterns": [{
+				"name": "constant.character.escape",
+				"match": "%%\\b"
+			}]
+		},
+
+		"sections": {
+			"name": "",
+			"begin": "--\\w+",
+			"beginCaptures": {
+				"0": {"name": "keyword.other"}
+			},
+			"patterns": [
+				{"include": "#section_signature"}
+			],
+			"end": "\n"
+		},
+
+		"section_signature": {
+			"patterns": [{
+				"name": "entity.name.class",
+				"match": "(<[\\w-]+>|<[\\w-]+:[\\w-]+>|[\\w-]+(\\|[\\w-]+)+)"
+			}]
+		},
+
+		"dialogs": {
+			"patterns": [{
+				"begin": "(\\-|\\*)\\s+(\\w+(\\s*,.*?)?\\s*:\\s*)?",
+				"beginCaptures": {
+					"2": {"name": "entity.name.function"},
+					"3": {"name": "storage.type"}
+				},
+				"contentName": "",
+				"patterns": [
+					{"include": "#dialog_inside"}
+				],
+				"end": "\\n"
+			}]
+		},
+		"dialog_inside": {
+			"patterns": [
+				{"include": "#embed_starscript"},
+				{"include": "#string_include"},
+				{"include": "#parameter_include"},
+				{"include": "#parameter_include_escape"},
+				{"include": "#embed_xml"},
+				{"include": "#block_comments"},
+				{"include": "#line_comments"}
+			]
+		},
+		"embed_starscript": {
+			"name": "keyword.other",
+			"begin": "\\[",
+			"end": "\\]"
+		},
+		"embed_xml": {
+			"name": "",
+			"begin": "<([\\w-]+)(\\s+.*?)?>",
+			"end": "</\\1>",
+			"patterns": [
+				{"include": "#dialog_inside"}
+			],
+			"beginCaptures": {
+				"0": {"name":"entity.name.tag"},
+				"2": {"name": "entity.other.attribute-name"}
+			},
+			"endCaptures": {
+				"0": {"name":"entity.name.tag"}
+			}
+		},
+		"keywords": {
+			"scope": [
+				"raw"
+			],
 			"patterns": [
 				{
-					"name": "constant.character.escape.starscript",
-					"match": "\\\\."
+					"begin": "sh\\s+",
+					"beginCaptures": {
+						"0": {"name": "keyword.control.starscript"}
+					},
+					"end": "\n",
+					"contentName": "meta.embedded.block.sh",
+					"patterns": [
+						{"include": "source.sh"}
+					]
+				},
+				{
+					"name": "keyword.control.starscript",
+					"match": "\\b(if|elif|else|unless|while|until|return|break|continue|match|goto)\\b"
+				},
+				{
+					"name": "keyword.other",
+					"match": "\\b(wait|print|exit|data|debug)\\b"
+				},
+				{
+					"name": "keyword.other",
+					"match": "\\b(with|save|into)\\b"
+				},
+				{
+					"name": "string.regexp",
+					"match": "^[\\s\\t]*([\\w]+((\\.[\\w-]+)+)?)?\\s(?!:)"
 				}
+				
 			]
+		},
+
+		"properties": {
+			"patterns": [{
+				"name": "entity.other.attribute-name",
+				"match": "([\\w-]+((\\.[\\w-]+)+)?)?\\s*:"
+			}]
 		}
-	},
-	"scopeName": "source.starscript"
+	}
 }

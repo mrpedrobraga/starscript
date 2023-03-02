@@ -1,0 +1,107 @@
+#############################################
+#
+#	Prologue, E01
+#
+#############################################
+
+## Lines for the prologue, inside Claire's dream
+
+# TODO: Add `with` routes.
+
+--the-call
+	- ...
+	- Finally.
+	- Here you are.
+	- In your quiet slumber.
+	- How blissful.[input] How peaceful.
+	call alarm_start
+	- It's nice.
+	- However,[pause] it must come to an end.
+	- Now.
+	- Claire.
+	call white_grow
+	- It's time[pause] for [pause]y[pause]o[pause]u [pause]t[pause]o[skip]
+
+# First interaction with dad!
+
+--dad_0
+	# Sliding down the staircase handrail
+	- claire : 'morninggggggg
+	- jim : Claire, how many times will I have to say.
+	- jim : You're going to fall face down someday, I'm telling you.
+	- claire : Daaaad, don't be boooring.
+	- jim : I made toast, want one?
+	- claire, down : ...no...
+	- jim : ...no?
+	- claire, down : ...
+	- jim : You don't want toast? What's wrong, sweetie?
+	- claire, down : Nothing... I... just...
+
+# Then, Jim will walk towards Claire.
+
+--dad_1
+	- jim : What's the matter.
+	- claire, down : Can I...[pause] not...[pause] go to school today?
+	- jim : *sigh* [pause]again?[input] why?
+	- claire, down : I'm just... a bit tired.
+	- jim : You say that, and then later you're doing backflips in the backyard.
+	- claire : I-[skip]
+	- jim : I know when something's wrong with you.
+	- jim : Tell me.
+	- claire, down : I[pause] just[pause]...[pause] Have a presentation.
+	- claire, down : What if I... let [important]it[/important] out...
+	- jim : ah[skip]
+	- claire : And then they'll be scared... and be upset with me...
+	- claire : And they won't wanna be friends.
+	wait 1.0
+	- jim : Oh Claire,
+	- jim : Who wouldn't wanna be friends with you?
+	- jim : You're so nice, pretty, AND cool.
+	- claire, down : You say that to make me feel better.
+	- jim : D-[pause]does it work?
+	- claire, up : Hmmm...
+	- claire : A teeny-[pause]tiny bit.
+	- jim : Will you go to school now?
+	- claire : ...
+	- claire : *sigh*[pause] fiiiine.
+	- jim : Idea: I'm going to order a pizza...
+	- jim : for us to watch a movie when you come back,
+	- jim : Me, you, and your father if he comes early for once.
+	# Claire walks towards the door, quickly.
+	- claire, smile : YEP YEP, OKAY. BYE DAD, I LOVE YOU.
+	- jim : Woah! Got excited all of a sudden???
+	# Claire looks at Jim
+	- claire : Not for school.
+	- jim : Do I get a kiss for my effort?
+	- claire : Hmmmmmmmmmm... Yeah.
+	# Claire gives him a little kiss.
+
+--dad_2
+	- jim : Nice! Now go conquer the world, my princess!
+	- claire : Ay Ay, Captain!
+
+
+## Lines for inside the nightmare school
+
+--nightmare_school_entrance
+	- claire : It's okay, it's just school.
+	- claire : Just relax and you'll be fine.
+
+--nightmare_school_bullies
+	- claire : H-[pause]hi!
+	- bully2 : ...
+	- bully1 : Oh, look, isn't it that freak?
+	- bully2 : Hey, don't tease, I've heard she's dangerous.
+	- claire : I'm not dangerous... I'm j[skip]
+	- bully1 : I've heard her kind has certain tendencies...
+	- bully2 : You shouldn't be allowed outside then.
+	- claire, down : I'm... not... dangerous...
+	- bully2 : I've heard[skip]
+	- claire, crying : I'm not dangerous... or bad...
+	call rumble
+	# Claire stands back and the lockers begin to rumble.
+	- bully1 : Look at you. Can't even control yourself.
+	- claire, nervouscrying : ...i'm not evil, or a freak, i'm
+	- bully2 : I-I-I'm calling the principal[skip]
+	call nightmare_end
+	# All the lockers implode, the nightmare cuts.
