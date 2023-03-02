@@ -1,6 +1,6 @@
-# starscript README
+# README
 
-Adds StarScript support to VSCode.
+Adds StarScript 2.0 support to VSCode.
 
 ## Features
 
