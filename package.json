@@ -1,0 +1,25 @@
+{
+  "name": "starscript",
+  "displayName": "StarScript",
+  "description": "StarScript for Visual Studio Code.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.76.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "starscript",
+      "aliases": ["StarScript", "starscript"],
+      "extensions": [".ssh",".star",".starscript",".ssobj"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "starscript",
+      "scopeName": "source.starscript",
+      "path": "./syntaxes/starscript.tmLanguage.json"
+    }]
+  }
+}
